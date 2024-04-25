@@ -1,3 +1,6 @@
+package List
+
+import Car
 import java.lang.IndexOutOfBoundsException
 
 class CarLinkedList : CarList {
