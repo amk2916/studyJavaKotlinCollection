@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CarListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-25T08:20:52" hostname="DESKTOP-LAH62EF" time="0.024">
+  <properties/>
+  <testcase name="removeForIndex()" classname="CarListTest" time="0.024"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

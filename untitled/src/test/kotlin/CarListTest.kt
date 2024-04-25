@@ -14,7 +14,7 @@ class CarListTest {
 
     @BeforeAll
     fun setupCarList() {
-        carList = CarArrayListImpl()
+        carList = CarLinkedList()
         for (i in 0 until 100) {
             carList.add(Car("name$i", i))
         }
@@ -43,7 +43,13 @@ class CarListTest {
         val a = carList.remove(Car("asdfasf", 100101 ))
         assertFalse(a)
     }
+    @Test
+    fun addPoIndexInArray(){
+        val newCar = Car("BMW X6", 1231)
+        carList.add(newCar, 99)
+        assertEquals(newCar,carList.get(99))
 
+    }
 
 
 
