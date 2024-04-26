@@ -7,4 +7,6 @@ interface CollectionCar {
     fun size(): Int
 
     fun clear()
+
+    fun contains(car: Car): Boolean
 }

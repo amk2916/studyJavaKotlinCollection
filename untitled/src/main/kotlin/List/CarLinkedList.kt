@@ -92,6 +92,17 @@ class CarLinkedList : CarList {
         size = 0
     }
 
+    override fun contains(car: Car): Boolean {
+        var carContainer = first
+
+        while (carContainer!!.next != null){
+            if(carContainer.value == car){
+                return true
+            }
+            carContainer = carContainer.next
+        }
+    }
+
 
     private fun getNode(index: Int): Node?{
         if(index <0 || index >= size){

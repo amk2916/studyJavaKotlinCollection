@@ -73,6 +73,10 @@ class CarArrayListImpl : CarList {
         sizeCar = 0
     }
 
+    override fun contains(car: Car): Boolean {
+        return arrayCar.contains(car)
+    }
+
     private fun checkSize(index: Int) {
         if (index >= sizeCar) {
             throw IndexOutOfBoundsException()

@@ -1,4 +1,5 @@
 import List.CarArrayListImpl
+import List.CarLinkedList
 import List.CarList
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -15,7 +16,7 @@ class CarListTest {
     @BeforeAll
     fun setupCarList() {
         count++
-        carList = CarArrayListImpl()
+        carList = CarLinkedList()
         for (i in 0 until 100) {
             carList.add(Car("name$i", i))
         }
@@ -28,21 +29,21 @@ class CarListTest {
     }
 
     @Test
-    fun removeForIndex(){
-        count
-        val a = carList
-        val a1= carList.size()
-        val b = carList.removeAt(4)
-        val c= carList.size()
-        assertEquals(99,c )
-    }
-
-    @Test
     fun addCar(){
         count++
         carList.add(Car("adfsgkljnkasdfng", 101))
         assertEquals(101, carList.size())
     }
+
+
+    @Test
+    fun removeForIndex(){
+
+        carList.removeAt(4)
+        val c= carList.size()
+        assertEquals(100,c )
+    }
+
 
     @Test
     fun removeCar(){
@@ -54,8 +55,8 @@ class CarListTest {
     fun addPoIndexInArray(){
         count++
         val newCar = Car("BMW X6", 1231)
-        carList.add(newCar, 99)
-        assertEquals(newCar,carList.get(99))
+        carList.add(newCar, 50)
+        assertEquals(newCar,carList.get(50))
 
     }
 

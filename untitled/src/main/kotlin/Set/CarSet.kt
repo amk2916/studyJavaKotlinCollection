@@ -12,4 +12,7 @@ interface CarSet : CollectionCar {
     override fun size(): Int
 
     override fun clear()
+
+    override fun contains(car: Car): Boolean
+
 }

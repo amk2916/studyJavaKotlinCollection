@@ -19,4 +19,6 @@ interface CarList : CollectionCar {
 
     override fun clear()
 
+    override fun contains(car: Car): Boolean
+
 }
