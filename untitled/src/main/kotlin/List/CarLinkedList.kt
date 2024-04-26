@@ -1,6 +1,7 @@
 package List
 
 import Car
+import org.intellij.lang.annotations.JdkConstants.BoxLayoutAxis
 import java.lang.IndexOutOfBoundsException
 
 class CarLinkedList : CarList {
@@ -9,7 +10,7 @@ class CarLinkedList : CarList {
     private var last: Node? = null
     private var size: Int = 0
 
-    override fun add(car: Car) {
+    override fun add(car: Car) : Boolean {
         if(size == 0 ){
             val node = Node(null, car, null)
             first = node
@@ -20,15 +21,16 @@ class CarLinkedList : CarList {
             secondLast!!.next = last
         }
         size++
+        return true
     }
 
-    override fun add(car: Car, index: Int) {
+    override fun add(car: Car, index: Int) : Boolean {
         if(index < 0 || index > size){
             throw IndexOutOfBoundsException()
         }
         if(index == size){
             add(car)
-            return
+            return true
         }
         val nodeNext = getNode(index)
         val nodePrev = nodeNext!!.previous
@@ -40,6 +42,9 @@ class CarLinkedList : CarList {
             first = newNode
         }
         size++
+
+        return true
+
 
     }
 
@@ -64,7 +69,7 @@ class CarLinkedList : CarList {
         val prev = node?.previous
 
         if(next !=null){
-            next?.previous = prev
+            next.previous = prev
         }else{
             last = prev
         }

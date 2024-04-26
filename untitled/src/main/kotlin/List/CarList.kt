@@ -1,21 +1,22 @@
 package List
 
 import Car
+import CollectionCar
 
-interface CarList {
+interface CarList : CollectionCar {
 
-    fun add(car: Car)
+    override fun add(car: Car) : Boolean
 
-    fun add(car: Car, index: Int)
+    fun add(car: Car, index: Int) : Boolean
 
     fun get(index: Int) : Car
 
-    fun remove(car: Car) : Boolean
+    override fun remove(car: Car) : Boolean
 
     fun removeAt(index: Int) : Boolean
 
-    fun size() : Int
+    override fun size() : Int
 
-    fun clear()
+    override fun clear()
 
 }

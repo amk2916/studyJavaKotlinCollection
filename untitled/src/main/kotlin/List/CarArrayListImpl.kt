@@ -7,13 +7,14 @@ class CarArrayListImpl : CarList {
     private var arrayCar: Array<Car?> = arrayOfNulls(10)
     private var sizeCar = 0
 
-    override fun add(car: Car) {
+    override fun add(car: Car) : Boolean{
         resizeArray()
         arrayCar[sizeCar] = car
         sizeCar++
+        return true
     }
 
-    override fun add(car: Car, index: Int) {
+    override fun add(car: Car, index: Int): Boolean {
         resizeArray()
         if (index < 0 || index > sizeCar) {
             throw IndexOutOfBoundsException()
@@ -35,6 +36,8 @@ class CarArrayListImpl : CarList {
         arrayCar[index] = car
 
         sizeCar++
+
+        return true
     }
 
 

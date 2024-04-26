@@ -1,14 +1,15 @@
 package Set
 
 import Car
+import CollectionCar
 
-interface CarSet {
+interface CarSet : CollectionCar {
 
-    fun add(car: Car) : Boolean
+    override fun add(car: Car): Boolean
 
-    fun remove(car: Car) : Boolean
+    override fun remove(car: Car): Boolean
 
-    fun size(): Int
+    override fun size(): Int
 
-    fun clear()
+    override fun clear()
 }

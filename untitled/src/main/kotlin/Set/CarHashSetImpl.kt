@@ -10,12 +10,28 @@ class CarHashSetImpl : CarSet {
 
     private var array = arrayOfNulls<Entry?>(INITIAL_CAPACITY)
 
+
+
     override fun add(car: Car): Boolean {
+        if(size >= LOAD_FACTOR * array.size){
+            increaseArray()
+        }
+        val added = add(car, this.array)
+        return if (added){
+            size++
+            true
+        }else{
+            false
+        }
+
+    }
+
+    private fun add(car: Car, array: Array<Entry?>) : Boolean{
         val position = getElementPosition(car, array.size)
         if (array[position] == null) {
             val entry = Entry(car, null)
             array[position] = entry
-            size++
+
             return true
         } else {
             var existedElement = array[position]
@@ -24,7 +40,7 @@ class CarHashSetImpl : CarSet {
                     return false
                 } else if (existedElement.next == null) {
                     existedElement.next = Entry(car, null)
-                    size++
+
                     return true
                 } else {
                     existedElement = existedElement.next
@@ -37,32 +53,26 @@ class CarHashSetImpl : CarSet {
         val position = getElementPosition(car, array.size)
         if(array[position] == null){
             return false
-        }else{
+        }else {
             var secondLast = array[position]!!
             var last = secondLast.next
-            if(secondLast.value == car){
-
+            if (secondLast.value == car) {
+                array[position] = last
+                size--
+                return true
             }
-
-            var existedElement = array[position]
-            if(existedElement!!.value == car){
-                if (existedElement.next != null){
-                    array[position] = existedElement.next
+            while (last != null)
+                if (last.value == car) {
+                    secondLast.next = last.next
                     size--
                     return true
-                }else{
-                    array[position] = null
-                    size--
-                    return true
+                } else {
+                    secondLast = last
+                    last = last.next
                 }
-            }else {
-                if(existedElement!!.next == null){
-                    return false
-                }else{
-                    if()
-                }
-            }
         }
+
+        return false
     }
 
     override fun size(): Int {
@@ -83,8 +93,20 @@ class CarHashSetImpl : CarSet {
         var next: Entry?
     )
 
+    private fun increaseArray(){
+        val newArray = arrayOfNulls<Entry>(array.size * 2)
+        array.forEach { entry ->
+            var existedElement = entry
+            while (existedElement != null){
+                add(existedElement.value!!, newArray)
+                existedElement = existedElement.next
+            }
+        }
+        this.array = newArray
+    }
     companion object {
         private const val INITIAL_CAPACITY = 16
+        private const val LOAD_FACTOR = 0.75
     }
 
 }
