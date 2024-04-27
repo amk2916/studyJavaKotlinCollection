@@ -16,7 +16,7 @@ class CarListTest {
     @BeforeAll
     fun setupCarList() {
         count++
-        carList = CarArrayListImpl()
+        carList = CarLinkedList()
         for (i in 0 until 100) {
             carList.add(Car("name$i", i))
         }

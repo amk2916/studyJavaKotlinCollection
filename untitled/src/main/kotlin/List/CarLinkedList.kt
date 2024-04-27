@@ -53,14 +53,25 @@ class CarLinkedList : CarList {
     }
 
     override fun remove(car: Car): Boolean {
+        val index =findElement(car)
+        if(index != -1){
+            return removeAt(index)
+        }
+        return false
+    }
+    override fun contains(car: Car): Boolean {
+        return findElement(car) != -1
+    }
+
+    private fun findElement(car: Car): Int{
         var node = first
         for(i in 0 until size){
             if(node?.value == car){
-                return removeAt(i)
+                return i
             }
             node = node?.next
         }
-        return false
+        return -1
     }
 
     override fun removeAt(index: Int): Boolean {
@@ -92,17 +103,7 @@ class CarLinkedList : CarList {
         size = 0
     }
 
-    override fun contains(car: Car): Boolean {
-        if(size == 0) return false
-        var checkCar = first!!
-        if(checkCar.value == car) return true
 
-        while(checkCar.next != null ){
-            checkCar = checkCar.next!!
-            if(checkCar.value == car) return true
-        }
-        return false
-    }
 
 
     private fun getNode(index: Int): Node?{

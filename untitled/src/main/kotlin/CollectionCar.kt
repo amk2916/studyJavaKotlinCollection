@@ -9,4 +9,5 @@ interface CollectionCar {
     fun clear()
 
     fun contains(car: Car): Boolean
+
 }

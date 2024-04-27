@@ -3,6 +3,10 @@ import java.util.LinkedList
 
 fun main(args: Array<String>) {
 
-    var list = LinkedList<Int>()
+    var list = mutableListOf<Int>()
+
+    list.forEach {
+
+    }
 
 }
