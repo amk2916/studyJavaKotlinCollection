@@ -84,6 +84,23 @@ class CarHashSetImpl : CarSet {
         size = 0
     }
 
+    override fun contains(car: Car): Boolean {
+        if(size() == 0) return false
+
+        val position = getElementPosition(car, array.size)
+        var checkCar = array[position] ?: return false
+
+        if(checkCar.value == car){
+            return true
+        } else {
+            while (checkCar.next != null) {
+                checkCar = checkCar.next!!
+                if (checkCar.value == car) return true
+            }
+        }
+        return false
+    }
+
     private fun getElementPosition(car: Car, arrayLength: Int): Int {
         return abs(car.hashCode()) % arrayLength
     }

@@ -93,14 +93,15 @@ class CarLinkedList : CarList {
     }
 
     override fun contains(car: Car): Boolean {
-        var carContainer = first
+        if(size == 0) return false
+        var checkCar = first!!
+        if(checkCar.value == car) return true
 
-        while (carContainer!!.next != null){
-            if(carContainer.value == car){
-                return true
-            }
-            carContainer = carContainer.next
+        while(checkCar.next != null ){
+            checkCar = checkCar.next!!
+            if(checkCar.value == car) return true
         }
+        return false
     }
 
 
